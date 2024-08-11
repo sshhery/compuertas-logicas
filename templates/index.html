@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical Gates Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .calculator {
+            display: inline-block;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: #f7f7f7;
+        }
+        input[type="text"] {
+            width: 80px;
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .gate-button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+        }
+        .AND {
+            background-color: #28a745; /* Verde */
+        }
+        .OR {
+            background-color: #007bff; /* Azul */
+        }
+        .NAND {
+            background-color: #dc3545; /* Rojo */
+        }
+        .NOR {
+            background-color: #ffc107; /* Amarillo */
+        }
+        .XOR {
+            background-color: #17a2b8; /* Cian */
+        }
+        .XNOR {
+            background-color: #6f42c1; /* Morado */
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Logical Gates Calculator</h1>
+    <div class="calculator">
+        <form method="post">
+            <input type="text" name="input1" placeholder="Input 1" value="{{ input1 }}">
+            <input type="text" name="input2" placeholder="Input 2" value="{{ input2 }}">
+
+            <div>
+                <button type="submit" name="gate" value="AND" class="gate-button AND">AND ∧</button>
+                <button type="submit" name="gate" value="OR" class="gate-button OR">OR ∨</button>
+                <button type="submit" name="gate" value="NAND" class="gate-button NAND">NAND ↑</button>
+                <button type="submit" name="gate" value="NOR" class="gate-button NOR">NOR ↓</button>
+                <button type="submit" name="gate" value="XOR" class="gate-button XOR">XOR ⊕</button>
+                <button type="submit" name="gate" value="XNOR" class="gate-button XNOR">XNOR ⊙</button>
+            </div>
+
+            <input type="submit" value="Calculate">
+        </form>
+
+        <div class="result">
+            {% if result is not none %}
+                <h2>Result: {{ result }}</h2>
+            {% endif %}
+            {% if result == "Invalid input" %}
+                <h2 style="color: red;">Invalid input</h2>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
